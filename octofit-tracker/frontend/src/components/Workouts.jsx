@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react';
 
-const getApiBaseUrl = () => {
+const getApiUrl = () => {
   const codespaceName = import.meta.env.VITE_CODESPACE_NAME;
 
   if (codespaceName && codespaceName.trim()) {
-    return `https://${codespaceName.trim()}-8000.app.github.dev`;
+    return `https://${codespaceName.trim()}-8000.app.github.dev/api/workouts/`;
   }
 
-  return 'http://localhost:8000';
+  return 'http://localhost:8000/api/workouts/';
 };
-
-const getApiUrl = () => `${getApiBaseUrl()}/api/workouts/`;
 
 function Workouts() {
   const [workouts, setWorkouts] = useState([]);
