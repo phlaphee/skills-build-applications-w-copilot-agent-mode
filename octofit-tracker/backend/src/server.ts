@@ -13,6 +13,17 @@ const baseUrl = codespaceName
   ? `https://${codespaceName}-8000.app.github.dev`
   : `http://localhost:${port}`;
 
+app.use((_request, response, next) => {
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  response.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
+  response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  if (_request.method === 'OPTIONS') {
+    response.sendStatus(204);
+    return;
+  }
+  next();
+});
+
 app.use(express.json());
 
 app.get('/api/health', async (_request, response) => {

@@ -7,6 +7,10 @@ const getApiUrl = () => {
     return `https://${codespaceName.trim()}-8000.app.github.dev/api/activities/`;
   }
 
+  if (window.location.hostname.endsWith('-5173.app.github.dev')) {
+    return `https://${window.location.hostname.replace('-5173.app.github.dev', '-8000.app.github.dev')}/api/activities/`;
+  }
+
   return 'http://localhost:8000/api/activities/';
 };
 
