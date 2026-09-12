@@ -10,7 +10,7 @@ const getApiBaseUrl = () => {
   return 'http://localhost:8000';
 };
 
-const getApiUrl = (path) => `${getApiBaseUrl()}/api/${path}/`;
+const getApiUrl = () => `${getApiBaseUrl()}/api/leaderboard/`;
 
 function Leaderboard() {
   const [leaders, setLeaders] = useState([]);
@@ -21,7 +21,7 @@ function Leaderboard() {
     const fetchLeaderboard = async () => {
       try {
         setLoading(true);
-        const response = await fetch(getApiUrl('leaderboard'));
+        const response = await fetch(getApiUrl());
         if (!response.ok) {
           throw new Error(`Request failed with status ${response.status}`);
         }

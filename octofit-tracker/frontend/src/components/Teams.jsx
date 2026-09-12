@@ -10,7 +10,7 @@ const getApiBaseUrl = () => {
   return 'http://localhost:8000';
 };
 
-const getApiUrl = (path) => `${getApiBaseUrl()}/api/${path}/`;
+const getApiUrl = () => `${getApiBaseUrl()}/api/teams/`;
 
 function Teams() {
   const [teams, setTeams] = useState([]);
@@ -21,7 +21,7 @@ function Teams() {
     const fetchTeams = async () => {
       try {
         setLoading(true);
-        const response = await fetch(getApiUrl('teams'));
+        const response = await fetch(getApiUrl());
         if (!response.ok) {
           throw new Error(`Request failed with status ${response.status}`);
         }
